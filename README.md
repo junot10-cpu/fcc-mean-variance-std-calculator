@@ -22,7 +22,7 @@ Install Python 3 and Git, then run:
 ```bash
 git clone https://github.com/junot10-cpu/fcc-mean-variance-std-calculator.git
 cd fcc-mean-variance-std-calculator
-python -m pip install numpy
+python3 -m pip install -r requirements.txt
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ python -m pip install numpy
 Run the included example:
 
 ```bash
-python mean_var_std.py
+python3 mean_var_std.py
 ```
 
 Or call the function from Python:
@@ -50,15 +50,15 @@ The input is reshaped into:
 6  7  8
 ```
 
-## Expected output format
+## Output format
 
-Each statistic should contain three entries:
+Each statistic contains three entries:
 
 1. A list of results for the three columns (`axis=0`).
 2. A list of results for the three rows (`axis=1`).
 3. A single result for all nine values.
 
-For example, the expected mean and sum entries are:
+For example, the mean and sum for `[0, 1, 2, 3, 4, 5, 6, 7, 8]` are:
 
 ```python
 {
@@ -69,14 +69,30 @@ For example, the expected mean and sum entries are:
 
 The full dictionary also includes variance, standard deviation, maximum, and minimum.
 
-## Project status
+If the input does not contain exactly nine numbers, `calculate()` raises `ValueError("List must contain nine numbers.")`. Importing the module does not print anything.
 
-The initial implementation is uploaded. The following corrections are pending before submission:
+## Project files
 
-- Remove the extra outer list surrounding each statistic's three entries.
-- Raise `ValueError("List must contain nine numbers.")` when the input does not contain exactly nine values.
-- Place the demonstration call inside an `if __name__ == "__main__":` block so importing the module does not print an example.
-- Verify the corrected implementation against the project tests.
+| File | Purpose |
+| --- | --- |
+| `mean_var_std.py` | The `calculate()` function. |
+| `main.py` | Shows an example result and runs the tests. |
+| `test_module.py` | Six learning tests: three data sets, two input-validation errors and a silent-import check. |
+| `requirements.txt` | Python dependencies (`numpy`). |
+
+## Run the tests
+
+```bash
+python3 main.py
+```
+
+or only the tests:
+
+```bash
+python3 -m unittest test_module -v
+```
+
+These are custom learning tests, not the official freeCodeCamp test suite.
 
 ## Skills practiced
 

@@ -1,11 +1,13 @@
-import numbers
-
-import numpy as np 
-
 import numpy as np
 
 
 def calculate(p):
+    """Return mean, variance, standard deviation, max, min and sum of nine numbers.
+
+    The nine numbers are reshaped into a 3 x 3 matrix. Each statistic is a list
+    of three entries: the three columns (axis=0), the three rows (axis=1), and
+    the whole matrix.
+    """
     if len(p) != 9:
         raise ValueError("List must contain nine numbers.")
 
@@ -47,4 +49,3 @@ def calculate(p):
 
 if __name__ == "__main__":
     print(calculate([0, 1, 2, 3, 4, 5, 6, 7, 8]))
-
